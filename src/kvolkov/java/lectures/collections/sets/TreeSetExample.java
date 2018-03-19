@@ -1,22 +1,22 @@
-package kvolkov.java.lectures.collections.lists;
+package kvolkov.java.lectures.collections.sets;
 
-import java.util.ArrayList;
-import java.util.List;
 import java.util.Random;
+import java.util.Set;
+import java.util.TreeSet;
 
 import kvolkov.java.lectures.collections.Utils;
 
 /**
- * This is a {@link ArrayList} timings comparison example.
+ * This is a {@link TreeSet} timings comparison example.
  * 
  * @author Kirill Volkov (vulkovk@gmail.com)
  *         https://github.com/vulko
  *
  */
-public class ArrayListExample {
+public class TreeSetExample {
 	
-	static List<String> mList = new ArrayList<>();
-	static final int sListCapacity = 1000000;
+	static Set<String> mSet = new TreeSet<>();
+	static final int sSetCapacity = 1000000;
 	static final int sHeavyOperationsIterations = 100;
 	
 	private static void runInsertTimingsComparsion() {
@@ -24,15 +24,15 @@ public class ArrayListExample {
 		long tsEnd = 0L;
 		String str = null;
 
-		for (int i = 0; i < sListCapacity; ++i) {
+		for (int i = 0; i < sSetCapacity; ++i) {
 			str = String.valueOf(i);
 			tsStart = System.currentTimeMillis();
-			mList.add(str);
+			mSet.add(str);
 			tsEnd = System.currentTimeMillis();
 			Utils.printTimeDiffIfNotZero(tsStart, tsEnd, "Insert of " + "\"" + str + "\"");
 		}
 		
-		System.out.println("Final list size = " + mList.size());
+		System.out.println("Final set size = " + mSet.size());
 	}
 
 	private static void runRemoveTimingsComparsion() {
@@ -41,18 +41,18 @@ public class ArrayListExample {
 		String str = null;
 		Random random = new Random();
 
-		// init list
-		for (int i = 0; i < sListCapacity; ++i) {
+		// init tree
+		for (int i = 0; i < sSetCapacity; ++i) {
 			str = String.valueOf(i);
-			mList.add(str);
+			mSet.add(str);
 		}
 
 		// now remove random elements
 		for (int i = 0; i < sHeavyOperationsIterations; ++i) {
-			str = String.valueOf(random.nextInt(sListCapacity));
+			str = String.valueOf(random.nextInt(sSetCapacity));
 
 			tsStart = System.currentTimeMillis();
-			final boolean found = mList.remove(str);
+			final boolean found = mSet.remove(str);
 			tsEnd = System.currentTimeMillis();
 			
 			if (found) {
@@ -60,7 +60,7 @@ public class ArrayListExample {
 			}
 		}
 
-		System.out.println("Final list size = " + mList.size());
+		System.out.println("Final set size = " + mSet.size());
 	}
 
 	private static void runFindTimingsComparsion() {
@@ -69,18 +69,24 @@ public class ArrayListExample {
 		String str = null;
 		Random random = new Random();
 
-		// init list
-		for (int i = 0; i < sListCapacity; ++i) {
+		// init tree
+		for (int i = 0; i < sSetCapacity; ++i) {
 			str = String.valueOf(i);
-			mList.add(str);
+			mSet.add(str);
 		}
 
 		// now find random elements
 		for (int i = 0; i < sHeavyOperationsIterations; ++i) {
-			str = String.valueOf(random.nextInt(sListCapacity));
+			str = String.valueOf(random.nextInt(sSetCapacity));
 
 			tsStart = System.currentTimeMillis();
-			String item = mList.get(mList.indexOf(str));
+			String item = null;
+			for (String string : mSet) {
+				if (string.equals(str)) {
+					item = string;
+					break;
+				}
+			}
 			tsEnd = System.currentTimeMillis();
 			
 			if (item != null) {
@@ -88,11 +94,11 @@ public class ArrayListExample {
 			}
 		}
 
-		System.out.println("Final list size = " + mList.size());
+		System.out.println("Final set size = " + mSet.size());
 	}
 	
 	public static void execute() {
-		mList.clear();
+		mSet.clear();
 		
 		runInsertTimingsComparsion();
 		runRemoveTimingsComparsion();

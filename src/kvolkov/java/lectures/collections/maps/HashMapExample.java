@@ -15,7 +15,7 @@ import kvolkov.java.lectures.collections.Utils;
  */
 public class HashMapExample {
 	
-	static Map<String, String> mHashMap = new HashMap<>();
+	static Map<String, String> mMap = new HashMap<>();
 	static final int sMapCapacity = 1000000;
 	
 	private static void runInsertTimingsComparsion() {
@@ -26,12 +26,12 @@ public class HashMapExample {
 		for (int i = 0; i < sMapCapacity; ++i) {
 			str = String.valueOf(i);
 			tsStart = System.currentTimeMillis();
-			mHashMap.put(str, str);
+			mMap.put(str, str);
 			tsEnd = System.currentTimeMillis();
 			Utils.printTimeDiff(tsStart, tsEnd, "Insert of " + "\"" + str + "\"");
 		}
 		
-		System.out.println("Final map size = " + mHashMap.size());
+		System.out.println("Final map size = " + mMap.size());
 	}
 
 	private static void runRemoveTimingsComparsion() {
@@ -43,7 +43,7 @@ public class HashMapExample {
 		// init map
 		for (int i = 0; i < sMapCapacity; ++i) {
 			str = String.valueOf(i);
-			mHashMap.put(str, str);
+			mMap.put(str, str);
 		}
 
 		// now remove random elements
@@ -51,7 +51,7 @@ public class HashMapExample {
 			str = String.valueOf(random.nextInt(sMapCapacity));
 
 			tsStart = System.currentTimeMillis();
-			final boolean found = mHashMap.remove(str, str);
+			final boolean found = mMap.remove(str, str);
 			tsEnd = System.currentTimeMillis();
 			
 			if (found) {
@@ -59,7 +59,7 @@ public class HashMapExample {
 			}
 		}
 
-		System.out.println("Final map size = " + mHashMap.size());
+		System.out.println("Final map size = " + mMap.size());
 	}
 
 	private static void runFindTimingsComparsion() {
@@ -71,7 +71,7 @@ public class HashMapExample {
 		// init map
 		for (int i = 0; i < sMapCapacity; ++i) {
 			str = String.valueOf(i);
-			mHashMap.put(str, str);
+			mMap.put(str, str);
 		}
 
 		// now find random elements
@@ -79,7 +79,7 @@ public class HashMapExample {
 			str = String.valueOf(random.nextInt(sMapCapacity));
 
 			tsStart = System.currentTimeMillis();
-			String item = mHashMap.get(str);
+			String item = mMap.get(str);
 			tsEnd = System.currentTimeMillis();
 			
 			if (item != null) {
@@ -87,11 +87,11 @@ public class HashMapExample {
 			}
 		}
 
-		System.out.println("Final map size = " + mHashMap.size());
+		System.out.println("Final map size = " + mMap.size());
 	}
 	
 	public static void execute() {
-		mHashMap.clear();
+		mMap.clear();
 		
 		runInsertTimingsComparsion();
 		runRemoveTimingsComparsion();
