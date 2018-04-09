@@ -1,5 +1,6 @@
 package kvolkov.java.lectures.designpatterns;
 
+import kvolkov.java.lectures.designpatterns.behavioral.ListenerExample;
 import kvolkov.java.lectures.designpatterns.creational.AbstractFactoryExample;
 import kvolkov.java.lectures.designpatterns.creational.BuilderExample;
 import kvolkov.java.lectures.designpatterns.creational.SingletonExample;
@@ -12,12 +13,13 @@ public class main {
 		BUILDER,
 		SINGLETON,
 		ADAPTER,
+		LISTENER
 	}
 	
 	public static void main(String[] args) {
 
 		// Select an example to run
-		final JL5_EXAMPLE executedExample = JL5_EXAMPLE.ADAPTER;
+		final JL5_EXAMPLE executedExample = JL5_EXAMPLE.LISTENER;
 		
 		switch(executedExample) {
 		case ABSTRACT_FACTORY:
@@ -38,6 +40,10 @@ public class main {
 
 		case ADAPTER:
 			AdapterExample.execute();
+			break;
+
+		case LISTENER:
+			ListenerExample.execute();
 			break;
 
 		default:
