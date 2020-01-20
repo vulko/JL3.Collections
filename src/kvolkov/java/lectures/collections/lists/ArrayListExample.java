@@ -16,7 +16,7 @@ import kvolkov.java.lectures.collections.Utils;
 public class ArrayListExample {
 	
 	static List<String> mList = new ArrayList<>();
-	static final int sListCapacity = 1000000;
+	static final int sListCapacity = 100000;
 	static final int sHeavyOperationsIterations = 100;
 	
 	private static void runInsertTimingsComparsion() {
@@ -95,8 +95,11 @@ public class ArrayListExample {
 		mList.clear();
 		
 		runInsertTimingsComparsion();
+		mList.clear();
 		runRemoveTimingsComparsion();
+		mList.clear();
 		runFindTimingsComparsion();
+		mList.clear();
 	}
 
 }

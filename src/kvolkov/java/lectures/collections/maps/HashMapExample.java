@@ -28,7 +28,7 @@ public class HashMapExample {
 			tsStart = System.currentTimeMillis();
 			mMap.put(str, str);
 			tsEnd = System.currentTimeMillis();
-			Utils.printTimeDiff(tsStart, tsEnd, "Insert of " + "\"" + str + "\"");
+			Utils.printTimeDiffIfNotZero(tsStart, tsEnd, "Insert of " + "\"" + str + "\"");
 		}
 		
 		System.out.println("Final map size = " + mMap.size());
@@ -55,7 +55,7 @@ public class HashMapExample {
 			tsEnd = System.currentTimeMillis();
 			
 			if (found) {
-				Utils.printTimeDiff(tsStart, tsEnd, "Remove of " + "\"" + str + "\"");
+				Utils.printTimeDiffIfNotZero(tsStart, tsEnd, "Remove of " + "\"" + str + "\"");
 			}
 		}
 
@@ -83,7 +83,7 @@ public class HashMapExample {
 			tsEnd = System.currentTimeMillis();
 			
 			if (item != null) {
-				Utils.printTimeDiff(tsStart, tsEnd, "Find value " + item + " with key " + "\"" + str + "\"");
+				Utils.printTimeDiffIfNotZero(tsStart, tsEnd, "Find value " + item + " with key " + "\"" + str + "\"");
 			}
 		}
 
