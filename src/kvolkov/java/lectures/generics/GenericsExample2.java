@@ -84,7 +84,7 @@ public class GenericsExample2 {
 		fromArrayToCollection(numberArray, collection);
 
 		// compile-time error
-		fromArrayToCollection(numberArray, stringCollection);
+//		fromArrayToCollection(numberArray, stringCollection);
 
 
 	}
